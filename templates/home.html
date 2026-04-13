@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> LDS VoteHub</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            height: 100vh;
+            background: linear-gradient(rgba(6,12,34,0.85), rgba(6,12,34,0.85)),
+                        url("{% static 'bg.jpg' %}") no-repeat center center/cover;
+            color: white;
+        }
+       
+        .overlay {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .content {
+            backdrop-filter: blur(10px);
+            background: rgba(0, 150, 136, 0.08);
+            border: 1px solid rgba(0, 150, 136, 0.4);
+            padding: 60px;
+            border-radius: 15px;
+            box-shadow: 0 0 40px rgba(0, 150, 136, 0.4);
+            max-width: 850px;
+        }
+
+        .icon {
+            font-size: 90px;
+            margin-bottom: 20px;
+            color: #00e5c0;
+            text-shadow: 0 0 25px #00e5c0;
+        }
+
+        h1 {
+            font-size: 54px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            color: #cfd8dc;
+        }
+
+        .btn {
+            padding: 16px 45px;
+            font-size: 20px;
+            background: #00e5c0;
+            color: #062022;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 0 20px #00e5c0;
+        }
+
+        .btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px #00e5c0;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: #90a4ae;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="overlay">
+        <div class="content">
+            <div class="icon">🗳️</div>
+            <h1>LDS VoteHub</h1>
+            <p>Secure • Transparent • Fast Digital Election Platform</p>
+            <a href="{% url 'login' %}" class="btn">Login to Vote</a>
+        </div>
+
+        <div class="footer">
+            Your Vote Matters © 2026
+        </div>
+    </div>
+
+</body>
+</html>

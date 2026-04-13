@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register | Online Voting System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(rgba(6,12,34,0.85), rgba(6,12,34,0.85)),
+                        url("{% static 'bg.jpg' %}") no-repeat center center/cover;
+            color: white;
+        }
+
+        .overlay {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        .register-box {
+            width: 450px;
+            padding: 35px;
+            border-radius: 15px;
+            background: rgba(0, 150, 136, 0.08);
+            border: 1px solid rgba(0, 150, 136, 0.4);
+            box-shadow: 0 0 40px rgba(0, 150, 136, 0.4);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .icon {
+            font-size: 60px;
+            margin-bottom: 10px;
+            color: #00e5c0;
+            text-shadow: 0 0 25px #00e5c0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid rgba(0, 229, 192, 0.5);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input::placeholder, textarea::placeholder {
+            color: #b0bec5;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 10px;
+            font-size: 16px;
+            background: #00e5c0;
+            color: #062022;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 0 20px #00e5c0;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        .login-link {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #cfd8dc;
+        }
+
+        .login-link a {
+            color: #00e5c0;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 15px;
+            font-size: 12px;
+            color: #90a4ae;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+    <div class="register-box">
+        <div class="icon">🗳️</div>
+        <h2>VOTER REGISTRATION</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- VOTER ID FIRST -->
+            <input type="text" name="voter_id" placeholder="Voter ID / Valid ID Number" required>
+
+            <!-- PERSONAL INFO -->
+            <input type="text" name="full_name" placeholder="Complete Full Name" required>
+
+            <textarea name="address" placeholder="Complete Address" rows="2" required></textarea>
+
+            <input type="text" name="phone" placeholder="Phone Number" required>
+
+            <input type="email" name="email" placeholder="Email Address" required>
+
+            <input type="date" name="dob" placeholder="Date of Birth" required>
+
+            <!-- ACCOUNT INFO -->
+            <input type="text" name="username" placeholder="Username" required>
+
+            <input type="password" name="password1" placeholder="Password" required>
+
+            <input type="password" name="password2" placeholder="Confirm Password" required>
+
+            <button type="submit" class="btn">Create Voter Account</button>
+        </form>
+
+        <div class="login-link">
+            Already registered?
+            <a href="{% url 'login' %}">Login here</a>
+        </div>
+
+        <div class="footer">
+            Secure Voting Registration © 2026
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
